@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+
+# generated data and warehouse
+extractors/data/
+
+# dbt build output
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/

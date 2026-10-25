@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main
+    tables:
+      - name: raw_hackernews_stories
+        description: Hacker News stories loaded by extractors/load_hackernews.py
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 72, period: hour}
+      - name: raw_remoteok_jobs
+        description: >
+          Current snapshot of RemoteOK job listings matching our target
+          roles, fully replaced on every run by
+          extractors/load_remoteok.py
+        loaded_at_field: loaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 72, period: hour}

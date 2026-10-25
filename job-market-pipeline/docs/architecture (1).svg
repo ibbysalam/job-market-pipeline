@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 890" width="1500" height="890" role="img" aria-label="Architecture of the Level 3 job market pipeline">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#334155"/></marker><marker id="ah-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="#334155"/></marker></defs>
+<rect width="1500" height="890" fill="#FFFFFF"/>
+<text x="30" y="34" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#0F172A" text-anchor="start">Level 3 job market pipeline: architecture</text>
+<text x="30" y="56" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#475569" text-anchor="start">Two sources, two loading patterns, one warehouse, and history kept with SCD Type 2</text>
+<rect x="15" y="70" width="1470" height="745" rx="16" fill="#F8FAFC" stroke="#64748B" stroke-width="1.6" stroke-dasharray="8 6"/>
+<text x="35" y="96" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#334155" text-anchor="start">Apache Airflow DAG</text>
+<text x="35" y="115" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start" font-style="italic">planned, the next thing I build</text>
+<rect x="430" y="82" width="104" height="30" rx="15" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="482.0" y="102" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">extract_hn</text>
+<rect x="544" y="82" width="150" height="30" rx="15" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="619.0" y="102" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">extract_remoteok</text>
+<path d="M694,97 L722,97" fill="none" stroke="#64748B" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="722" y="82" width="62" height="30" rx="15" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="753.0" y="102" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">load</text>
+<path d="M784,97 L812,97" fill="none" stroke="#64748B" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="812" y="82" width="84" height="30" rx="15" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="854.0" y="102" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">dbt run</text>
+<path d="M896,97 L924,97" fill="none" stroke="#64748B" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="924" y="82" width="88" height="30" rx="15" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="968.0" y="102" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">dbt test</text>
+<path d="M1012,97 L1040,97" fill="none" stroke="#64748B" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="1040" y="82" width="120" height="30" rx="15" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="1100.0" y="102" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="600" fill="#334155" text-anchor="middle">dbt snapshot</text>
+<text x="430" y="128" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">The two extracts run in parallel. dbt only starts once both have finished.</text>
+<text x="40" y="166" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="start">1  SOURCES</text>
+<text x="280" y="166" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="start">2  EXTRACT</text>
+<text x="560" y="166" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="start">3  LAND AS FILES</text>
+<text x="810" y="166" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#475569" text-anchor="start">4  LOAD</text>
+<rect x="40" y="185" width="200" height="170" rx="10" fill="#EEF2FF" stroke="#6366F1" stroke-width="1.6"/>
+<text x="54" y="213" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">Hacker News API</text>
+<text x="54" y="232" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">public, no API key</text>
+<text x="54" y="261" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">newstories.json</text>
+<text x="54" y="283" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">item/{id}.json</text>
+<text x="54" y="305" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">New stories keep arriving</text>
+<rect x="280" y="185" width="240" height="170" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+<text x="294" y="213" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">hackernews.py</text>
+<text x="294" y="232" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">Python extractor</text>
+<text x="294" y="261" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">1. Read the last-seen story ID</text>
+<text x="294" y="283" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">2. Fetch only newer stories</text>
+<text x="294" y="305" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">3. Save the new last ID</text>
+<rect x="294" y="321" width="103.4" height="22" rx="11" fill="#059669"/>
+<text x="345.7" y="336" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">INCREMENTAL</text>
+<rect x="560" y="185" width="210" height="80" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+<text x="572" y="211" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0F172A" text-anchor="start">Stories, appended</text>
+<text x="572" y="232" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="11" font-weight="400" fill="#475569" text-anchor="start">hn_stories.jsonl</text>
+<rect x="560" y="285" width="210" height="70" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+<text x="572" y="311" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0F172A" text-anchor="start">Watermark</text>
+<text x="572" y="332" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="11" font-weight="400" fill="#475569" text-anchor="start">hn_watermark.json</text>
+<rect x="810" y="185" width="210" height="170" rx="10" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+<text x="824" y="213" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">load_hackernews.py</text>
+<text x="824" y="232" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">Python loader</text>
+<text x="824" y="261" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">INSERT new rows only</text>
+<text x="824" y="283" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">ON CONFLICT DO NOTHING</text>
+<text x="824" y="305" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">Re-runs add 0 duplicates</text>
+<rect x="824" y="321" width="66.4" height="22" rx="11" fill="#0D9488"/>
+<text x="857.2" y="336" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">DEDUPE</text>
+<path d="M240,270 L280,270" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M520,225 L560,225" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M524,320 L556,320" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)" marker-start="url(#ah-start)"/>
+<path d="M770,225 L810,225" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="40" y="475" width="200" height="170" rx="10" fill="#EEF2FF" stroke="#6366F1" stroke-width="1.6"/>
+<text x="54" y="503" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">RemoteOK API</text>
+<text x="54" y="522" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">public, no API key</text>
+<text x="54" y="551" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">remoteok.com/api</text>
+<text x="54" y="573" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">?tags=data</text>
+<text x="54" y="595" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">Listings open and close</text>
+<rect x="280" y="475" width="240" height="170" rx="10" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+<text x="294" y="503" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">remoteok.py</text>
+<text x="294" y="522" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">Python extractor</text>
+<text x="294" y="551" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">1. Server pre-filter (tags=data)</text>
+<text x="294" y="573" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">2. Keep titles that match roles</text>
+<text x="294" y="595" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">3. About 100 in, 16 kept</text>
+<rect x="294" y="611" width="118.2" height="22" rx="11" fill="#059669"/>
+<text x="353.1" y="626" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">FULL SNAPSHOT</text>
+<rect x="560" y="475" width="210" height="80" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+<text x="572" y="501" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0F172A" text-anchor="start">Current listings, replaced</text>
+<text x="572" y="522" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="11" font-weight="400" fill="#475569" text-anchor="start">remoteok_jobs.jsonl</text>
+<rect x="560" y="575" width="210" height="70" rx="10" fill="#FFFBEB" stroke="#D97706" stroke-width="1.6"/>
+<text x="572" y="601" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#0F172A" text-anchor="start">Last run's copy (diff only)</text>
+<text x="572" y="622" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="11" font-weight="400" fill="#475569" text-anchor="start">remoteok_jobs_previous</text>
+<rect x="810" y="475" width="210" height="170" rx="10" fill="#F0FDFA" stroke="#0D9488" stroke-width="1.6"/>
+<text x="824" y="503" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">load_remoteok.py</text>
+<text x="824" y="522" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">Python loader</text>
+<text x="824" y="551" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">CREATE OR REPLACE TABLE</text>
+<text x="824" y="573" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">Table = what is open now</text>
+<text x="824" y="595" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#0F172A" text-anchor="start">Closed listings drop out</text>
+<rect x="824" y="611" width="73.80000000000001" height="22" rx="11" fill="#0D9488"/>
+<text x="860.9" y="626" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">REPLACE</text>
+<path d="M240,560 L280,560" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M520,515 L560,515" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M520,610 L560,610" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M770,515 L810,515" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<rect x="1060" y="135" width="410" height="615" rx="14" fill="#FFFFFF" stroke="#EA580C" stroke-width="2"/>
+<rect x="1060" y="135" width="410" height="615" rx="14" fill="#FFFFFF" stroke="#334155" stroke-width="2"/>
+<text x="1080" y="160" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#0F172A" text-anchor="start">5  DuckDB warehouse</text>
+<text x="1080" y="177" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#475569" text-anchor="start">one local file: warehouse.duckdb (free, works with dbt)</text>
+<rect x="1075" y="190" width="380" height="155" rx="10" fill="#FFF7ED" stroke="#EA580C" stroke-width="1.6"/>
+<text x="1090" y="210" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#EA580C" text-anchor="start">RAW  (loaded exactly as received)</text>
+<rect x="1095" y="220" width="295" height="56" rx="8" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.3"/>
+<text x="1108" y="244" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">raw_hackernews_stories</text>
+<text x="1108" y="263" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">primary key: id</text>
+<rect x="1095" y="284" width="295" height="56" rx="8" fill="#FFFFFF" stroke="#EA580C" stroke-width="1.3"/>
+<text x="1108" y="308" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">raw_remoteok_jobs</text>
+<text x="1108" y="327" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">rebuilt on every load</text>
+<rect x="1075" y="372" width="380" height="158" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+<text x="1090" y="392" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#2563EB" text-anchor="start">STAGING  (dbt views, cleaned up)</text>
+<rect x="1095" y="402" width="295" height="56" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.3"/>
+<text x="1108" y="426" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">stg_remoteok_jobs</text>
+<text x="1108" y="445" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">job_title, 0 salary becomes null</text>
+<rect x="1095" y="466" width="295" height="56" rx="8" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.3"/>
+<text x="1108" y="490" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">stg_hackernews_stories</text>
+<text x="1108" y="509" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">by becomes author, unix time to timestamp</text>
+<rect x="1075" y="557" width="380" height="178" rx="10" fill="#F5F3FF" stroke="#7C3AED" stroke-width="1.6"/>
+<text x="1090" y="577" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#7C3AED" text-anchor="start">HISTORY  (dbt snapshot, SCD Type 2)</text>
+<rect x="1095" y="587" width="340" height="44" rx="8" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1.3"/>
+<text x="1108" y="606" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">snapshots.remoteok_jobs_snapshot</text>
+<text x="1108" y="622" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">one row per version of a listing</text>
+<rect x="1095" y="640" width="340" height="82" rx="6" fill="#FFFFFF" stroke="#7C3AED" stroke-width="1"/>
+<rect x="1095" y="640" width="340" height="24" rx="6" fill="#EDE9FE"/>
+<text x="1103" y="656" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="10" font-weight="700" fill="#4C1D95" text-anchor="start">job_id</text>
+<text x="1151" y="656" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="10" font-weight="700" fill="#4C1D95" text-anchor="start">job_title</text>
+<text x="1251" y="656" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="10" font-weight="700" fill="#4C1D95" text-anchor="start">dbt_valid_from</text>
+<text x="1351" y="656" font-family="Consolas, Menlo, 'DejaVu Sans Mono', monospace" font-size="10" font-weight="700" fill="#4C1D95" text-anchor="start">dbt_valid_to</text>
+<text x="1103" y="682" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">101</text>
+<text x="1151" y="682" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">Data Engineer</text>
+<text x="1251" y="682" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">Oct 1</text>
+<text x="1351" y="682" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">null (open)</text>
+<rect x="1096" y="693" width="338" height="26" fill="#FEE2E2"/>
+<text x="1103" y="710" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">102</text>
+<text x="1151" y="710" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">Analytics Eng.</text>
+<text x="1251" y="710" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#0F172A" text-anchor="start">Oct 1</text>
+<text x="1351" y="710" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#7F1D1D" text-anchor="start">Oct 9 (closed)</text>
+<path d="M1020,270 L1040,270 L1040,248 L1095,248" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M1020,560 L1040,560 L1040,312 L1095,312" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M1390,248 L1425,248 L1425,494 L1390,494" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M1390,312 L1408,312 L1408,430 L1390,430" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<path d="M1095,430 L1082,430 L1082,609 L1095,609" fill="none" stroke="#334155" stroke-width="1.8" marker-end="url(#ah)"/>
+<text x="1095" y="362" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#2563EB" text-anchor="start">dbt run</text>
+<text x="1095" y="549" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#7C3AED" text-anchor="start">dbt snapshot (RemoteOK only)</text>
+<rect x="40" y="690" width="980" height="105" rx="10" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.6"/>
+<text x="55" y="716" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#0F172A" text-anchor="start">Data quality gates: dbt test + source freshness</text>
+<text x="1005" y="716" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" fill="#DB2777" text-anchor="end">7 tests passing on real data</text>
+<rect x="55" y="727" width="225" height="55" rx="8" fill="#FFFFFF" stroke="#DB2777" stroke-width="1.2"/>
+<text x="67" y="748" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">Unique + not null</text>
+<text x="67" y="767" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">story_id and job_id</text>
+<rect x="292" y="727" width="225" height="55" rx="8" fill="#FFFFFF" stroke="#DB2777" stroke-width="1.2"/>
+<text x="304" y="748" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">Not null</text>
+<text x="304" y="767" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">posted_at and job_title</text>
+<rect x="529" y="727" width="225" height="55" rx="8" fill="#FFFFFF" stroke="#DB2777" stroke-width="1.2"/>
+<text x="541" y="748" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">Custom volume test</text>
+<text x="541" y="767" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">RemoteOK table must not be empty</text>
+<rect x="766" y="727" width="225" height="55" rx="8" fill="#FFFFFF" stroke="#DB2777" stroke-width="1.2"/>
+<text x="778" y="748" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="700" fill="#0F172A" text-anchor="start">Freshness check</text>
+<text x="778" y="767" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#475569" text-anchor="start">warn at 24h, error at 72h</text>
+<path d="M1020,742 L1060,742" fill="none" stroke="#DB2777" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+<rect x="30" y="842" width="26" height="16" rx="4" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+<text x="66" y="855" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">Built and verified on real data</text>
+<rect x="290" y="842" width="26" height="16" rx="8" fill="#FFFFFF" stroke="#64748B" stroke-width="1.3" stroke-dasharray="4 3"/>
+<text x="326" y="855" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#475569" text-anchor="start">Planned</text>
+<text x="1470" y="855" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#475569" text-anchor="end">Ibrahim Salami  |  ibrahimsalami.dev</text>
+</svg>

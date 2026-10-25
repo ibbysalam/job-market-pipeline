@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_hackernews_stories
+    description: Cleaned Hacker News stories, one row per story.
+    columns:
+      - name: story_id
+        description: Hacker News item ID.
+        tests:
+          - unique
+          - not_null
+      - name: posted_at
+        description: When the story was posted.
+        tests:
+          - not_null
+
+  - name: stg_remoteok_jobs
+    description: >
+      Current snapshot of matching RemoteOK listings. Full history of
+      what opened/closed lives in the remoteok_jobs_snapshot instead —
+      this model only reflects "right now".
+    columns:
+      - name: job_id
+        description: RemoteOK job ID.
+        tests:
+          - unique
+          - not_null
+      - name: job_title
+        tests:
+          - not_null

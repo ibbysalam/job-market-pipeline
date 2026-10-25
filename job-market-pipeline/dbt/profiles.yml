@@ -1,0 +1,11 @@
+# dbt looks for profiles.yml in ~/.dbt/ by default. Since this one lives
+# inside the project instead, run dbt commands with --profiles-dir .
+# (from inside the dbt/ folder), or set the DBT_PROFILES_DIR environment
+# variable to this folder so you don't have to pass the flag every time.
+level3_job_market:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../extractors/data/warehouse.duckdb'
+      threads: 1
