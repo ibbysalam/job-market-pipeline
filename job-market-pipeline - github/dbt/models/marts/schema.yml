@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: job_postings_enriched
+    description: One row per job open right now, with the AI's findings attached.
+    columns:
+      - name: job_id
+        tests:
+          - unique
+          - not_null
+
+  - name: skill_demand
+    description: How many open jobs ask for each skill, according to the AI.
+    columns:
+      - name: skill
+        tests:
+          - unique
+          - not_null

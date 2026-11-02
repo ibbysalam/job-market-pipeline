@@ -1,0 +1,23 @@
+name: 'level3_job_market'
+version: '1.0.0'
+config-version: 2
+
+profile: 'level3_job_market'
+
+model-paths: ["models"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  level3_job_market:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
